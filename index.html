@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>European Data Centre Monitor — Tracking opposition to data centre development across Europe</title>
+<meta name="description" content="European Data Centre Monitor is an independent research project tracking community, political, and regulatory opposition to data centre development across Europe.">
+<style>
+  :root{
+    --yellow:#f7e733;
+    --ink:#0d0d0d;
+    --navy:#0b2a5b;
+    --red:#e63222;
+    --orange:#f59e1d;
+    --white:#ffffff;
+    --sans:'Avenir Next','Segoe UI',-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);color:var(--ink);background:var(--yellow);line-height:1.5}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+
+  /* Header */
+  header{background:var(--yellow)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:28px 0;gap:24px;flex-wrap:wrap}
+  .brand{font-weight:800;font-size:1.45rem;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+  nav{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+  nav a{text-decoration:none;font-size:1rem;font-weight:600;color:var(--ink)}
+  nav a.boxed{border:2px solid var(--ink);padding:8px 14px}
+  nav a.contact{background:var(--ink);color:var(--yellow);padding:12px 26px}
+
+  /* Reports dropdown */
+  .dd{position:relative}
+  .dd-menu{display:none;position:absolute;top:100%;right:0;padding-top:10px;z-index:20;min-width:180px}
+  .dd:hover .dd-menu,.dd:focus-within .dd-menu{display:block}
+  .dd-menu ul{list-style:none;background:var(--yellow);border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  .dd-menu a{display:block;padding:12px 18px;font-weight:700;text-align:right;border-bottom:1px solid rgba(0,0,0,.15)}
+  .dd-menu li:last-child a{border-bottom:0}
+  .dd-menu a:hover{background:var(--ink);color:var(--yellow)}
+
+  /* Hero */
+  .hero{background:var(--yellow);padding:56px 0 88px}
+  .hero .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(2.2rem,4.6vw,3.9rem);font-weight:800;line-height:1.12;letter-spacing:-.02em}
+  .hero h1 .u{position:relative;white-space:nowrap}
+  .hero h1 .u::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:7px;background:var(--red);border-radius:4px;transform:rotate(-1deg)}
+  .hero .sub{margin-top:26px;font-size:1.1rem;font-weight:500;max-width:30em;color:#333}
+  .hero .cta{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;text-decoration:none;font-weight:700;padding:15px 30px;font-size:1rem}
+  .btn-dark{background:var(--ink);color:var(--yellow)}
+  .btn-line{border:2px solid var(--ink);color:var(--ink)}
+
+  /* Map */
+  .mapbox{position:relative}
+  .mapbox svg{width:100%;height:auto;display:block}
+  .mapnote{font-size:.75rem;color:#555;margin-top:8px;text-align:right}
+  .bubble{filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
+  .bubble text{font-family:var(--sans);font-weight:800;fill:#fff}
+
+  /* Ticker band */
+  .band{background:var(--ink);color:var(--yellow);padding:20px 0;overflow:hidden}
+  .band .wrap{display:flex;gap:48px;flex-wrap:wrap;justify-content:space-between;font-weight:700;font-size:1rem}
+  .band span b{color:var(--white)}
+
+  /* Report */
+  .report{background:var(--navy);color:var(--white);padding:80px 0}
+  .report .grid{display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center}
+  .report .kicker{color:var(--yellow);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.8rem;margin-bottom:14px}
+  .report h2{font-size:clamp(1.5rem,3vw,2.3rem);font-weight:800;line-height:1.2;max-width:24em}
+  .btn-yellow{background:var(--yellow);color:var(--ink)}
+
+  /* Briefings — dark 3-column cards, fed by briefings.json */
+  .briefs{background:#3d4636;color:#f3f2ec;padding:88px 0}
+  .briefs h3{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:48px;color:#fff}
+  .briefs .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:48px}
+  .card h4{font-size:1.3rem;font-weight:600;margin-bottom:16px;color:#fff}
+  .card h4 a{color:#fff;text-decoration:none}
+  .card h4 a:hover{text-decoration:underline;text-underline-offset:4px}
+  .card p{font-style:italic;color:#d9d8cf;font-size:.98rem}
+  .card p b{font-style:normal;color:#fff}
+  .card .d{display:block;margin-top:18px;font-style:normal;font-size:.88rem;color:#a9ab9d}
+  .card .src{font-size:.8rem;margin-top:10px;font-style:normal}
+  .card .src a{color:#a9ab9d}
+
+  /* Duo */
+  .duo{background:var(--yellow);padding:80px 0}
+  .duo .grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+  .duo h3{font-size:1.6rem;font-weight:800;margin-bottom:12px}
+  .duo p{color:#333;margin-bottom:18px}
+  .sub-form{display:flex;gap:10px;flex-wrap:wrap}
+  .sub-form input{flex:1;min-width:200px;padding:14px;border:2px solid var(--ink);font-size:1rem;background:var(--white)}
+  .sub-form button{background:var(--ink);color:var(--yellow);border:0;padding:14px 26px;font-weight:700;font-size:1rem;cursor:pointer}
+
+  footer{background:var(--ink);color:#bbb;padding:48px 0;font-size:.95rem}
+  footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+  footer .brand{color:var(--yellow);font-size:1.15rem}
+  footer a{color:#ddd}
+
+  @media(max-width:860px){
+    .hero .grid,.report .grid,.duo .grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">European Data Centre Monitor</a>
+    <nav>
+      <div class="dd">
+        <a class="boxed" href="#report" aria-haspopup="true">Reports</a>
+        <div class="dd-menu">
+          <ul>
+            <li><a href="report-q2-2026.html">Q2 2026</a></li>
+            <li><a href="#">Q1 2026</a></li>
+            <li><a href="#">Q3–Q4 2025</a></li>
+            <li><a href="#">2023–Q2 2025</a></li>
+          </ul>
+        </div>
+      </div>
+      <a href="#subscribe">Newsletter</a>
+      <a href="#briefings">Briefings</a>
+      <a class="contact" href="mailto:eudcmon@gmail.com">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap grid">
+    <div>
+      <h1>We track the growing <span class="u">opposition</span> to data centre development across Europe</h1>
+      <p class="sub">Moratoriums, rejections, water disputes, and green-belt battles — monitored country by country.</p>
+      <div class="cta">
+        <a class="btn btn-dark" href="#report">Get the Q2 2026 report</a>
+        <a class="btn btn-line" href="#briefings">Latest briefings</a>
+      </div>
+    </div>
+
+    <div class="mapbox">
+      <!-- Stylized Europe map with opposition hotspots -->
+      <svg viewBox="0 0 560 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of Europe showing data centre opposition hotspots">
+        <!-- landmass (simplified) -->
+        <g fill="#5a5a2e" stroke="#f7e733" stroke-width="3" stroke-linejoin="round">
+          <!-- Scandinavia -->
+          <path d="M330,20 L370,15 L400,45 L390,95 L360,130 L340,100 L345,60 Z" fill="#c9c46a"/>
+          <path d="M300,35 L330,20 L345,60 L340,100 L315,120 L300,80 Z" fill="#c9c46a"/>
+          <!-- British Isles -->
+          <path d="M170,120 L200,105 L215,140 L210,185 L185,215 L165,200 L172,160 Z"/>
+          <path d="M130,150 L155,140 L160,175 L140,195 L122,180 Z"/>
+          <!-- Continental Europe -->
+          <path d="M225,215 L265,190 L310,180 L360,175 L420,190 L455,230 L440,280 L400,300 L360,290 L330,320 L300,310 L260,330 L230,300 L215,255 Z"/>
+          <!-- Iberia -->
+          <path d="M140,340 L200,320 L235,340 L225,390 L180,420 L140,400 L128,365 Z"/>
+          <!-- Italy -->
+          <path d="M320,330 L345,325 L365,365 L385,410 L370,425 L345,390 L325,355 Z"/>
+          <!-- Netherlands / Benelux highlight patch -->
+          <path d="M252,196 L272,188 L280,206 L262,214 Z" fill="#77773d"/>
+        </g>
+
+        <!-- opposition bubbles (populated by script from counts data) -->
+        <g class="bubble" id="bubbles"></g>
+      </svg>
+      <p class="mapnote">Tracked opposition cases per country — bubble size scales with case count. <span id="map-updated"></span></p>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap">
+    <span><b>70+</b> projects rejected or restricted in early 2026</span>
+    <span><b>10+</b> French towns campaigning against data centres</span>
+    <span><b>~20%</b> of Ireland's electricity used by data centres</span>
+  </div>
+</div>
+
+<section class="report" id="report">
+  <div class="wrap grid">
+    <div>
+      <div class="kicker">Q2 2026 Report</div>
+      <h2>2026 is on track to be a record year for blocked, delayed, and restricted data centre projects across Europe</h2>
+    </div>
+    <a class="btn btn-yellow" href="report-q2-2026.html">Get the report — £50</a>
+  </div>
+</section>
+
+<section class="briefs" id="briefings">
+  <div class="wrap">
+    <h3>Latest Updates</h3>
+    <div class="cards" id="briefing-cards"><!-- populated from briefings.json --></div>
+  </div>
+</section>
+
+<section class="duo">
+  <div class="wrap grid">
+    <div id="subscribe">
+      <h3>Subscribe</h3>
+      <p>Free weekly updates on the political, regulatory, and community risks facing European data centre projects — delivered via Substack.</p>
+      <a class="btn btn-dark" href="https://europeandatacentremonitor.substack.com/subscribe">Subscribe on Substack</a>
+    </div>
+    <div>
+      <h3>About us</h3>
+      <p>European Data Centre Monitor is a research project tracking grassroots, political, and regulatory opposition to data centre development across Europe. Our research is objective, fact-based, and nonpartisan.</p>
+      <a class="btn btn-line" href="mailto:eudcmon@gmail.com">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#">European Data Centre Monitor</a>
+    <div><a href="mailto:eudcmon@gmail.com">eudcmon@gmail.com</a> &nbsp;·&nbsp; <a href="https://europeandatacentremonitor.substack.com">Newsletter</a></div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   MAP DATA — single source of truth for the hotspot bubbles.
+
+   TO UPDATE AUTOMATICALLY: host a JSON file (e.g. counts.json,
+   same shape as DEFAULT_DATA below) next to this page and keep
+   it current — via a script, a CMS, or a scheduled job. The
+   page fetches it on every load and falls back to the embedded
+   defaults if it's missing.
+
+   The starter counts below reflect only the cases cited in the
+   briefings on this page — replace with your tracked totals.
+   ============================================================ */
+const DEFAULT_DATA = {
+  updated: "2026-07-02",
+  countries: [
+    { code: "IE", x: 138, y: 165, count: 1 },
+    { code: "UK", x: 192, y: 165, count: 3 },
+    { code: "NL", x: 266, y: 200, count: 2 },
+    { code: "DE", x: 330, y: 230, count: 2 },
+    { code: "FR", x: 250, y: 280, count: 10 },
+    { code: "ES", x: 178, y: 368, count: 3 },
+    { code: "IT", x: 352, y: 368, count: 1 }
+  ]
+};
+
+function renderMap(data) {
+  const g = document.getElementById("bubbles");
+  g.innerHTML = "";
+  const max = Math.max(...data.countries.map(c => c.count), 1);
+  const colors = ["#e63222", "#f59e1d"]; // alternate red/orange
+  data.countries.forEach((c, i) => {
+    const r = 16 + 30 * Math.sqrt(c.count / max);   // area-ish scaling
+    const ns = "http://www.w3.org/2000/svg";
+    const circle = document.createElementNS(ns, "circle");
+    circle.setAttribute("cx", c.x); circle.setAttribute("cy", c.y);
+    circle.setAttribute("r", r.toFixed(1));
+    circle.setAttribute("fill", colors[i % 2]);
+    const num = document.createElementNS(ns, "text");
+    num.setAttribute("x", c.x); num.setAttribute("y", c.y + 2);
+    num.setAttribute("text-anchor", "middle");
+    num.setAttribute("font-size", Math.max(13, r * 0.55));
+    num.textContent = c.count;
+    const label = document.createElementNS(ns, "text");
+    label.setAttribute("x", c.x); label.setAttribute("y", c.y + r + 15);
+    label.setAttribute("text-anchor", "middle");
+    label.setAttribute("font-size", 11);
+    label.setAttribute("fill", "#0d0d0d");
+    label.textContent = c.code;
+    const title = document.createElementNS(ns, "title");
+    title.textContent = c.code + ": " + c.count + " tracked case" + (c.count === 1 ? "" : "s");
+    circle.appendChild(title);
+    g.append(circle, num, label);
+  });
+  const note = document.getElementById("map-updated");
+  if (data.updated) note.textContent = "Last updated " + data.updated + ".";
+}
+
+renderMap(DEFAULT_DATA);
+fetch("counts.json", { cache: "no-store" })
+  .then(r => r.ok ? r.json() : null)
+  .then(d => { if (d && d.countries) renderMap(d); })
+  .catch(() => {}); // offline / no file — defaults already rendered
+
+/* ============================================================
+   LATEST UPDATES — fed by briefings.json (same auto-update
+   model as counts.json). Shows the 3 most recent briefings.
+   ============================================================ */
+const DEFAULT_BRIEFINGS = [
+  {
+    date: "2026-07-02",
+    title: "Briefing 02/07/2026",
+    summary: "In the UK, two major new proposals are set to test local sentiment: a 1.5 GW campus in Devon from the company behind the stalled UK–Morocco power cable, and a ~150 MW facility planned near Norwich, Norfolk. In Ireland, debate over data centres' share of a squeezed national grid grew increasingly fractious, with the sector consuming over a fifth of national electricity. And UK campaign groups led by Global Action Plan continued organising a national coalition against 'dirty data centres'.",
+    sources: [
+      { label: "DCD — Devon", url: "https://www.datacenterdynamics.com/en/news/15gw-data-center-campus-proposed-in-devon-uk/" },
+      { label: "The Irish Times", url: "https://www.irishtimes.com/environment/climate-crisis/2026/06/07/power-hungry-data-centres-fuel-increasingly-fractious-debate-about-squeezed-national-grid/" }
+    ]
+  },
+  {
+    date: "2026-03-16",
+    title: "Briefing 16/03/2026",
+    summary: "In France, candidates in more than ten towns, including Marseille and Bordeaux, campaigned against new data centres or called for moratoriums in the municipal elections. In Marseille, candidate Sébastien Barles called for a moratorium, citing competition for scarce port electricity. And near Marseille, residents of Saint-Victoret moved to appeal the approved Telehouse data centre after a change of mayor.",
+    sources: [
+      { label: "Reuters via Insurance Journal", url: "https://www.insurancejournal.com/news/international/2026/03/16/862014.htm" },
+      { label: "DCD", url: "https://www.datacenterdynamics.com/en/news/change-of-mayor-prompts-appeal-against-data-center-planned-in-provence-france/" }
+    ]
+  },
+  {
+    date: "2026-02-06",
+    title: "Briefing 06/02/2026",
+    summary: "In Germany, local officials in Groß-Gerau, near Frankfurt, voted to reject a proposed €2.5B, 174 MW data centre after residents argued the buildings would dominate the town's skyline. In Schleswig-Holstein, a planned 150 MW facility in North Frisia met a hostile reception at a town-hall meeting, with planning permission still outstanding.",
+    sources: [
+      { label: "Robert Bryce", url: "https://robertbryce.substack.com/p/europe-to-big-tech-we-dont-want-you" },
+      { label: "DCD", url: "https://www.datacenterdynamics.com/en/news/150mw-data-center-planned-for-north-frisia-germany-attracts-protests/" }
+    ]
+  },
+  {
+    date: "2026-01-23",
+    title: "Briefing 23/01/2026",
+    summary: "In the UK, the government conceded in the High Court that it made a material error in approving a £1bn data centre at Iver, Buckinghamshire, without a full Environmental Impact Assessment — a win for campaign groups Foxglove and Global Action Plan. And in Ireland, the CRU's strict new grid-connection rules continue to draw criticism from both industry and opposition parties calling for a full moratorium.",
+    sources: [
+      { label: "Stevens & Bolton", url: "https://www.stevens-bolton.com/insights/102meck/government-admits-legal-error-over-green-belt-data-centre-implications-for-the/" },
+      { label: "William Fry", url: "https://www.williamfry.com/knowledge/cru-publishes-long-awaited-final-policy-on-data-centre-connections/" }
+    ]
+  }
+];
+
+function renderBriefings(items) {
+  const host = document.getElementById("briefing-cards");
+  host.innerHTML = "";
+  items
+    .slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3)
+    .forEach(b => {
+      const card = document.createElement("article");
+      card.className = "card";
+      const prettyDate = new Date(b.date + "T00:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+      const srcLinks = (b.sources || []).map(s => `<a href="${s.url}">${s.label}</a>`).join(" · ");
+      card.innerHTML = `
+        <h4><a href="${b.url || "#"}">${b.title}</a></h4>
+        <p><b>This week's round-up:</b> ${b.summary}</p>
+        ${srcLinks ? `<p class="src">Sources: ${srcLinks}</p>` : ""}
+        <span class="d">${prettyDate}</span>`;
+      host.appendChild(card);
+    });
+}
+
+renderBriefings(DEFAULT_BRIEFINGS);
+fetch("briefings.json", { cache: "no-store" })
+  .then(r => r.ok ? r.json() : null)
+  .then(d => { if (Array.isArray(d) && d.length) renderBriefings(d); })
+  .catch(() => {});
+</script>
+
+</body>
+</html>

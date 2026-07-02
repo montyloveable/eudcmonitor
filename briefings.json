@@ -1,0 +1,44 @@
+[
+  {
+    "date": "2026-07-02",
+    "title": "Briefing 02/07/2026",
+    "url": "#",
+    "summary": "In the UK, two major new proposals are set to test local sentiment: a 1.5 GW campus in Devon from the company behind the stalled UK–Morocco power cable, and a ~150 MW facility planned on a long-stalled business park site near Norwich, Norfolk. In Ireland, debate over data centres' share of a squeezed national grid grew increasingly fractious, with the sector consuming over a fifth of national electricity. And UK campaign groups led by Global Action Plan continued organising a national coalition against 'dirty data centres'.",
+    "sources": [
+      { "label": "DCD — Devon", "url": "https://www.datacenterdynamics.com/en/news/15gw-data-center-campus-proposed-in-devon-uk/" },
+      { "label": "DCD — Norfolk", "url": "https://www.datacenterdynamics.com/en/news/150mw-data-center-planned-in-norfolk-uk/" },
+      { "label": "The Irish Times", "url": "https://www.irishtimes.com/environment/climate-crisis/2026/06/07/power-hungry-data-centres-fuel-increasingly-fractious-debate-about-squeezed-national-grid/" },
+      { "label": "Global Action Plan", "url": "https://www.globalactionplan.org.uk/insights/news/campaigners-unite-to-stop-dirty-data-centres" }
+    ]
+  },
+  {
+    "date": "2026-03-16",
+    "title": "Briefing 16/03/2026",
+    "url": "#",
+    "summary": "In France, candidates in more than ten towns, including Marseille and Bordeaux, campaigned against new data centres or called for moratoriums in the municipal elections. In Marseille, candidate Sébastien Barles called for a moratorium, citing competition for scarce port electricity. And near Marseille, residents of Saint-Victoret moved to appeal the approved Telehouse data centre after a change of mayor.",
+    "sources": [
+      { "label": "Reuters via Insurance Journal", "url": "https://www.insurancejournal.com/news/international/2026/03/16/862014.htm" },
+      { "label": "DCD", "url": "https://www.datacenterdynamics.com/en/news/change-of-mayor-prompts-appeal-against-data-center-planned-in-provence-france/" }
+    ]
+  },
+  {
+    "date": "2026-02-06",
+    "title": "Briefing 06/02/2026",
+    "url": "#",
+    "summary": "In Germany, local officials in Groß-Gerau, near Frankfurt, voted to reject a proposed €2.5B, 174 MW data centre after residents argued the buildings would dominate the town's skyline. In Schleswig-Holstein, a planned 150 MW facility in North Frisia met a hostile reception at a town-hall meeting, with planning permission still outstanding.",
+    "sources": [
+      { "label": "Robert Bryce", "url": "https://robertbryce.substack.com/p/europe-to-big-tech-we-dont-want-you" },
+      { "label": "DCD", "url": "https://www.datacenterdynamics.com/en/news/150mw-data-center-planned-for-north-frisia-germany-attracts-protests/" }
+    ]
+  },
+  {
+    "date": "2026-01-23",
+    "title": "Briefing 23/01/2026",
+    "url": "#",
+    "summary": "In the UK, the government conceded in the High Court that it made a material error in approving a £1bn data centre at Iver, Buckinghamshire, without a full Environmental Impact Assessment — a win for campaign groups Foxglove and Global Action Plan. And in Ireland, the CRU's strict new grid-connection rules continue to draw criticism from both industry and opposition parties calling for a full moratorium.",
+    "sources": [
+      { "label": "Stevens & Bolton", "url": "https://www.stevens-bolton.com/insights/102meck/government-admits-legal-error-over-green-belt-data-centre-implications-for-the/" },
+      { "label": "William Fry", "url": "https://www.williamfry.com/knowledge/cru-publishes-long-awaited-final-policy-on-data-centre-connections/" }
+    ]
+  }
+]
