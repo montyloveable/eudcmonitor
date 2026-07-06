@@ -239,8 +239,8 @@
 const DEFAULT_DATA = {
   updated: "2026-07-02",
   countries: [
-    { code: "IE", x: 138, y: 165, count: 1 },
-    { code: "UK", x: 192, y: 165, count: 3 },
+    { code: "IE", x: 118, y: 170, count: 1 },
+    { code: "UK", x: 202, y: 150, count: 3 },
     { code: "NL", x: 266, y: 200, count: 2 },
     { code: "DE", x: 330, y: 230, count: 2 },
     { code: "FR", x: 250, y: 280, count: 10 },
@@ -255,7 +255,7 @@ function renderMap(data) {
   const max = Math.max(...data.countries.map(c => c.count), 1);
   const colors = ["#e63222", "#f59e1d"]; // alternate red/orange
   data.countries.forEach((c, i) => {
-    const r = 16 + 30 * Math.sqrt(c.count / max);   // area-ish scaling
+    const r = Math.min(38, 13 + 21 * Math.sqrt(c.count / max));   // capped area-ish scaling
     const ns = "http://www.w3.org/2000/svg";
     const circle = document.createElementNS(ns, "circle");
     circle.setAttribute("cx", c.x); circle.setAttribute("cy", c.y);
@@ -264,7 +264,7 @@ function renderMap(data) {
     const num = document.createElementNS(ns, "text");
     num.setAttribute("x", c.x); num.setAttribute("y", c.y + 2);
     num.setAttribute("text-anchor", "middle");
-    num.setAttribute("font-size", Math.max(13, r * 0.55));
+    num.setAttribute("font-size", Math.max(12, r * 0.5));
     num.textContent = c.count;
     const label = document.createElementNS(ns, "text");
     label.setAttribute("x", c.x); label.setAttribute("y", c.y + r + 15);
