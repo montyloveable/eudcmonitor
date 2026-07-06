@@ -340,15 +340,36 @@ function renderBriefings(items) {
   items
     .slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3)
     .forEach(b => {
+      // DOM-built (no innerHTML) so briefing data can never inject markup
+      const safeUrl = u => (typeof u === "string" && /^https?:\/\//i.test(u)) ? u : "#";
       const card = document.createElement("article");
       card.className = "card";
       const prettyDate = new Date(b.date + "T00:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
-      const srcLinks = (b.sources || []).map(s => `<a href="${s.url}">${s.label}</a>`).join(" · ");
-      card.innerHTML = `
-        <h4><a href="${b.url || "#"}">${b.title}</a></h4>
-        <p><b>This week's round-up:</b> ${b.summary}</p>
-        ${srcLinks ? `<p class="src">Sources: ${srcLinks}</p>` : ""}
-        <span class="d">${prettyDate}</span>`;
+      const h4 = document.createElement("h4");
+      const ta = document.createElement("a");
+      ta.href = safeUrl(b.url); ta.textContent = b.title || "";
+      h4.appendChild(ta); card.appendChild(h4);
+      const para = document.createElement("p");
+      const bold = document.createElement("b");
+      bold.textContent = "This week's round-up: ";
+      para.appendChild(bold);
+      para.appendChild(document.createTextNode(b.summary || ""));
+      card.appendChild(para);
+      const srcs = (b.sources || []).filter(x => x && x.label);
+      if (srcs.length) {
+        const sp = document.createElement("p"); sp.className = "src";
+        sp.appendChild(document.createTextNode("Sources: "));
+        srcs.forEach((x, i) => {
+          const a = document.createElement("a");
+          a.href = safeUrl(x.url); a.rel = "noopener"; a.textContent = x.label;
+          sp.appendChild(a);
+          if (i < srcs.length - 1) sp.appendChild(document.createTextNode(" · "));
+        });
+        card.appendChild(sp);
+      }
+      const dspan = document.createElement("span");
+      dspan.className = "d"; dspan.textContent = prettyDate;
+      card.appendChild(dspan);
       host.appendChild(card);
     });
 }
