@@ -1,5 +1,17 @@
 [
   {
+    "date": "2026-07-06",
+    "title": "Briefing 06/07/2026",
+    "url": "#",
+    "summary": "In the UK, Scotland became the new front line: the consultation on Apatura's 300 MW AI data centre at Larbert, Falkirk closed on 2 July with 6,719 objections against just 80 messages of support, and First Minister John Swinney said he is giving 'active consideration' to national planning guidance for hyperscale data centres. Also in Scotland, Fife Council extended the objection deadline for the proposed Auchtertool data centre after an administrative error, with a petition against the project approaching 5,000 signatures. At EU level, The Register reported that the European Commission has weakened its proposed environmental rating scheme for data centres following industry lobbying, with a revised draft going to member states.",
+    "sources": [
+      { "label": "Deadline News — Larbert", "url": "https://www.deadlinenews.co.uk/2026/07/03/larbert-ai-data-centre-what-happens-next-after-more-than-6700-objections/" },
+      { "label": "STV News", "url": "https://news.stv.tv/east-central/deadline-approaches-for-views-on-humungous-planned-data-centres-in-falkirk-and-fife" },
+      { "label": "Deadline News — Fife", "url": "https://www.deadlinenews.co.uk/2026/07/02/fife-council-extend-data-centre-complaints-deadline-after-admin-error/" },
+      { "label": "The Register", "url": "https://www.theregister.com/on-prem/2026/07/03/eu-appears-to-find-datacenter-emissions-easier-to-offset-than-lobbyists/5265814" }
+    ]
+  },
+  {
     "date": "2026-07-02",
     "title": "Briefing 02/07/2026",
     "url": "#",
