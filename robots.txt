@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://eudcmonitor.com/sitemap.xml
