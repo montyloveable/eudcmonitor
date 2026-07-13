@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-07-13",
+    "title": "Briefing 13/07/2026",
+    "url": "#",
+    "summary": "In Ireland, plans for a €1bn data centre campus and solar farm at Rochfortbridge, Co Westmeath were stalled after 10 separate third-party appeals were lodged with An Coimisiún Pleanála against Westmeath County Council's grant of permission to Red Admiral DC Ltd; appellants cited traffic, noise, and emissions of up to 493,000 tonnes of CO2 a year. In England, The Telegraph revealed that the Minister for Investment wrote to Epping Forest District Council urging approval of the Microsoft/Nscale 'supercomputer' data centre at Loughton, which was granted last month despite objections from the town council and residents; the Local Government Association responded that councils must be treated as key partners in data centre planning. Also in England, Beaconsfield MP Joy Morrissey and Denham Parish Council objected to Mulberry's proposed hyperscale data centre on green belt land by the M40 at Denham, which has drawn 11 objections and no representations in support. In Germany, the municipality of Langenhorn (North Frisia) postponed its decision on Uniq Land's proposed 150 MW data centre after residents gave the project a hostile reception at a town hall meeting. And in Poland — the tracker's first Polish case — the group Zielona Gwiazda is organising resident opposition to DL Invest Group's planned 200 MW data centre on the former Fiat site in Bielsko-Biała, citing energy, water, and environmental concerns.",
+    "sources": [
+      {
+        "label": "The Irish Times — Westmeath",
+        "url": "https://www.irishtimes.com/business/2026/07/07/plans-for-1bn-westmeath-data-centre-stalled/"
+      },
+      {
+        "label": "Capacity — Epping Forest",
+        "url": "https://capacityglobal.com/news/nscale-uk-data-centre-planning-despite-objection/"
+      },
+      {
+        "label": "Yahoo News UK — Denham",
+        "url": "https://uk.news.yahoo.com/bucks-mp-objects-huge-m40-131505520.html"
+      },
+      {
+        "label": "DCD — Denham parish objection",
+        "url": "https://www.datacenterdynamics.com/en/news/local-council-objects-to-60000-sqm-data-center-proposal-in-buckinghamshire-uk/"
+      },
+      {
+        "label": "DCD — Langenhorn",
+        "url": "https://www.datacenterdynamics.com/en/news/150mw-data-center-planned-for-north-frisia-germany-attracts-protests/"
+      },
+      {
+        "label": "bielsko.info — Bielsko-Biała",
+        "url": "https://www.bielsko.info/wiadomosci/47801-protest-przeciwko-budowie-ogromnego-centrum-danych-mieszkancy-alarmuja-o-skutkach-inwestycji"
+      }
+    ]
+  },
+  {
     "date": "2026-07-06",
     "title": "Coverage expanded: the Nordics and Poland",
     "url": "#",
