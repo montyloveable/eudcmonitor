@@ -1,5 +1,33 @@
 [
   {
+    "date": "2026-07-20",
+    "title": "Briefing 20/07/2026",
+    "url": "#",
+    "summary": "In Germany, Stack Infrastructure abandoned its planned €3bn hyperscale data centre outside Babenhausen, Hesse — a facility that would have sprawled over 270,000 sqm southeast of Frankfurt. Landowner Aumovio confirmed the cancellation, citing 'protracted and uncertain processes' around the planning application, after a coalition of parties on Babenhausen's city council demanded greater reliance on renewable energy, a noise-emissions cap, alternative water-cooling concepts, and a €250m guarantee certificate — demands the mayor derided as unjustified. It is the third major German withdrawal in recent months, after Google's Berlin-Brandenburg pull-out and Vantage's refusal at Gross-Gerau. In Ireland, An Coimisiún Pleanála formally confirmed it is reviewing all ten third-party appeals against the €1bn Rochfortbridge data centre campus in Co Westmeath, with a determination due by 27 October 2026. And the backlash went global: on 18 July opponents staged the first nationwide day of protest against data centres in the US — 142 protests across 42 states — while international coverage of Europe's fights, from the Aragon court challenge to Amazon's PIGA privileges to Irish grid limits, framed data centre siting as a defining political battle of the AI build-out.",
+    "sources": [
+      {
+        "label": "DCD — Babenhausen cancelled",
+        "url": "https://www.datacenterdynamics.com/en/news/data-center-project-in-hesse-germany-canceled/"
+      },
+      {
+        "label": "Hessenschau — Babenhausen",
+        "url": "https://www.hessenschau.de/suedhessen/plaene-fuer-rechenzentrum-in-babenhausen-geplatzt-v1,rechenzentrum-babenhausen-106.html"
+      },
+      {
+        "label": "Westmeath Examiner — 10 appeals under review",
+        "url": "https://www.westmeathexaminer.ie/2026/07/17/coimisiun-pleanala-consider-10-appeals-over-data-centre/"
+      },
+      {
+        "label": "Taipei Times (AFP) — global backlash",
+        "url": "https://www.taipeitimes.com/News/biz/archives/2026/07/19/2003860977"
+      },
+      {
+        "label": "Washington Post — US national protest day",
+        "url": "https://www.washingtonpost.com/technology/2026/07/18/how-data-centers-became-symbol-americans-rage/"
+      }
+    ]
+  },
+  {
     "date": "2026-07-13",
     "title": "Briefing 13/07/2026",
     "url": "#",
